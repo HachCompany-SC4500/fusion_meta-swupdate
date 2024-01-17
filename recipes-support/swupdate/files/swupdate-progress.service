@@ -1,0 +1,12 @@
+[Unit]
+Description=swupdate progress service
+Requires=swupdate.service
+After=swupdate.service
+
+[Service]
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/swupdate-progress
+StandardOutput=syslog+console
+
+[Install]
+WantedBy=multi-user.target

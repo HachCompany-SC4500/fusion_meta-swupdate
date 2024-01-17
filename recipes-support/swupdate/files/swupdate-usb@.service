@@ -1,0 +1,8 @@
+[Unit]
+Description=swupdate usb service
+Requires=swupdate.service
+
+[Service]
+Type=forking
+Environment="SCRIPT_ARGS=%I"
+ExecStart=/etc/swupdate-usb.sh $SCRIPT_ARGS

@@ -1,0 +1,27 @@
+From 119d6ebfe31877c49f5067fc1d7522946a9b2c49 Mon Sep 17 00:00:00 2001
+From: Dragan Cecavac <dcecavac@witekio.com>
+Date: Tue, 27 Oct 2020 18:24:37 +0100
+Subject: [PATCH 2/2] Display USB / LOCAL source when update is initiated via
+ swupdate-client
+
+Signed-off-by: Dragan Cecavac <dcecavac@witekio.com>
+---
+ tools/progress.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/progress.c b/tools/progress.c
+index a741eed..db25bde 100644
+--- a/tools/progress.c
++++ b/tools/progress.c
+@@ -238,7 +238,7 @@ int main(int argc, char **argv)
+ 			fprintf(stdout, "Interface: ");
+ 			switch (msg.source) {
+ 			case SOURCE_UNKNOWN:
+-				fprintf(stdout, "UNKNOWN\n\n");
++				fprintf(stdout, "USB / LOCAL\n\n");
+ 				break;
+ 			case SOURCE_WEBSERVER:
+ 				fprintf(stdout, "WEBSERVER\n\n");
+-- 
+2.7.4
+

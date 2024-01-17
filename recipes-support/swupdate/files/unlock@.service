@@ -1,0 +1,19 @@
+# The service is instanciated and the instance value is the mount point.
+# %i is the instance name 'escaped' (e.g. : media-sda1)
+# %I is the instance name not 'escaped'(e.g. : media/sda1)
+
+[Unit]
+Description=Unlock detection for "/%I"
+# Here the service is bound to the corresponding mount point so that the current service is stopped if the mount point disappears
+# media-sda1.mount is automatically managed by systemd as dev-sda1.device.
+BindsTo=%i.mount
+# Need to have xserver and swupdate running to be able to apply the unlock
+Requires=display-manager.service
+After=display-manager.service swupdate.service
+
+
+[Service]
+# One script is launched at start, but nothing is running
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/etc/swupdate-unlock.sh  "/%I"

@@ -1,0 +1,10 @@
+[Unit]
+Description=SWUpdate support service
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/etc/swupdate-support.sh
+
+[Install]
+WantedBy=multi-user.target

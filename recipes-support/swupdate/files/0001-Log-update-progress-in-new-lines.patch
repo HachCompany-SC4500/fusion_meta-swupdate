@@ -1,0 +1,26 @@
+From 3e05b1a61b44cbcd9ce9453433cd59b6c8635a12 Mon Sep 17 00:00:00 2001
+From: Dragan Cecavac <dcecavac@witekio.com>
+Date: Tue, 27 Oct 2020 18:08:06 +0100
+Subject: [PATCH 1/2] Log update progress in new lines
+
+Signed-off-by: Dragan Cecavac <dcecavac@witekio.com>
+---
+ tools/progress.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/progress.c b/tools/progress.c
+index 579f167..a741eed 100644
+--- a/tools/progress.c
++++ b/tools/progress.c
+@@ -273,7 +273,7 @@ int main(int argc, char **argv)
+ 		memset(bar,'=', filled_len);
+ 		memset(&bar[filled_len], '-', sizeof(bar) - filled_len);
+ 
+-		fprintf(stdout, "[ %.60s ] %d of %d %d%% (%s)\r",
++		fprintf(stdout, "[ %.60s ] %d of %d %d%% (%s)\n",
+ 			bar,
+ 			msg.cur_step, msg.nsteps, msg.cur_percent,
+ 		       	msg.cur_image);
+-- 
+2.7.4
+

@@ -1,0 +1,21 @@
+[Unit]
+Description=SWUpdate daemon
+Documentation=https://github.com/sbabic/swupdate
+Documentation=https://sbabic.github.io/swupdate
+After=network.target swupdate-support.service
+
+[Service]
+# system_bank.env contains the value of the variable ${bank_selection}.
+# Its value is either "a" or "b" depending on the bank the system is running from.
+EnvironmentFile=/run/system_bank.env
+
+# SWUpdate causes some confusion by calling -P option a preinstall script,
+# because it will not be called at the very start of the update process,
+# but after all components with the option "installed-directly = true;"
+# have been installed.
+# ${bank_selection} comes from the loaded enviroment file system_bank.env above.
+ExecStart=/usr/bin/swupdate -e all,bank-${bank_selection} -v -w "-r /www" -k /etc/public.pem -P /etc/swupdate-preinstall.sh
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

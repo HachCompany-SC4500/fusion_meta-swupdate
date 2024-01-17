@@ -1,0 +1,144 @@
+software =
+{
+        version = "@@DISTRO_VERSION@@";
+        hardware-compatibility: ["1.0"];
+
+        images = {
+                ref = "#./all/bank-a/images";
+        };
+
+        scripts: (
+                {
+                        filename = "shellscript.sh";
+                        type = "shellscript";
+                        sha256 = "@shellscript.sh";
+                }
+        );
+
+        files: (
+                {
+                        filename = "resize2fs";
+                        sha256 = "@resize2fs";
+                        path = "/tmp/resize2fs";
+                },
+                {
+                        filename = "persistent.tar.xz";
+                        sha256 = "@persistent.tar.xz";
+                        path = "/tmp/persistent.tar.xz";
+                },
+                {
+                        filename = "persistent_init.tar.xz";
+                        sha256 = "@persistent_init.tar.xz";
+                        path = "/tmp/persistent_init.tar.xz";
+                },
+                {
+                        filename = "persistent-core.sh";
+                        sha256 = "@persistent-core.sh";
+                        path = "/tmp/persistent-core.sh";
+                },
+                {
+                        filename = "persistent-crypto.sh";
+                        sha256 = "@persistent-crypto.sh";
+                        path = "/tmp/persistent-crypto.sh";
+                },
+                {
+                        filename = "persistent-fuse-validate.sh";
+                        sha256 = "@persistent-fuse-validate.sh";
+                        path = "/tmp/persistent-fuse-validate.sh";
+                },
+                {
+                        filename = "persistent-mount-both.sh";
+                        sha256 = "@persistent-mount-both.sh";
+                        path = "/tmp/persistent-mount-both.sh";
+                },
+                {
+                        filename = "persistent-recovery.sh";
+                        sha256 = "@persistent-recovery.sh";
+                        path = "/tmp/persistent-recovery.sh";
+                },
+                {
+                        filename = "swupdate-log.sh";
+                        sha256 = "@swupdate-log.sh";
+                        path = "/tmp/swupdate-log.sh";
+                },
+                {
+                        filename = "uboot-helper.sh";
+                        sha256 = "@uboot-helper.sh";
+                        path = "/tmp/uboot-helper.sh";
+                },
+                {
+                        filename = "uEnv-bank-a.img";
+                        sha256 = "@uEnv-bank-a.img"
+                        path = "/tmp/uEnv-bank-a.img";
+                },
+                {
+                        filename = "uEnv-bank-b.img";
+                        sha256 = "@uEnv-bank-b.img"
+                        path = "/tmp/uEnv-bank-b.img";
+                }
+
+        );
+
+        all = {
+                bank-a: {
+                        images: (
+                                {
+                                        filename = "bootfs.fat.gz";
+                                        device = "/dev/mmcblk_hook_bfs";
+                                        installed-directly = true;
+                                        sha256 = "@bootfs.fat.gz"
+                                        compressed=true;
+                                },
+                                {
+                                        filename = "rootfs.ext4.gz";
+                                        device = "/dev/mmcblk_hook_rfs";
+                                        installed-directly = true;
+                                        sha256 = "@rootfs.ext4.gz"
+                                        compressed=true;
+                                },
+                                {
+                                        filename = "u-boot.imx";
+                                        device = "/dev/mmcblk0boot0";
+                                        sha256 = "@u-boot.imx"
+                                        offset = "1024";
+                                },
+                                {
+                                        filename = "u-boot-secondary-header";
+                                        device = "/dev/mmcblk0boot0";
+                                        sha256 = "@u-boot-secondary-header";
+                                        offset = "512";
+                                }
+                        );
+                }
+                bank-b: {
+                        images: (
+                                {
+                                        filename = "bootfs.fat.gz";
+                                        device = "/dev/mmcblk_hook_bfs";
+                                        installed-directly = true;
+                                        sha256 = "@bootfs.fat.gz"
+                                        compressed=true;
+                                },
+                                {
+                                        filename = "rootfs.ext4.gz";
+                                        device = "/dev/mmcblk_hook_rfs";
+                                        installed-directly = true;
+                                        sha256 = "@rootfs.ext4.gz"
+                                        compressed=true;
+                                },
+                                {
+                                        filename = "u-boot.imx";
+                                        device = "/dev/mmcblk0boot0";
+                                        sha256 = "@u-boot.imx"
+                                        offset = "1024";
+                                },
+                                {
+                                        filename = "u-boot-secondary-header";
+                                        device = "/dev/mmcblk0boot0";
+                                        sha256 = "@u-boot-secondary-header";
+                                        offset = "512";
+                                }
+                        );
+                }
+        }
+}
