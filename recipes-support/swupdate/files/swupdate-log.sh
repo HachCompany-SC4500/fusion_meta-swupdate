@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Copyright (C) 2019 Witekio
-# Author: Dragan Cecavac <dcecavac@witekio.com>
+# Author: Dragan Cecavac <dcecavac>
 #
 
 log_buffer_file="${log_buffer_file:-$(mktemp)}"

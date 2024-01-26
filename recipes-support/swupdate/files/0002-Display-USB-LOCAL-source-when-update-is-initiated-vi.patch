@@ -1,10 +1,10 @@
 From 119d6ebfe31877c49f5067fc1d7522946a9b2c49 Mon Sep 17 00:00:00 2001
-From: Dragan Cecavac <dcecavac@witekio.com>
+From: Dragan Cecavac <dcecavac>
 Date: Tue, 27 Oct 2020 18:24:37 +0100
 Subject: [PATCH 2/2] Display USB / LOCAL source when update is initiated via
  swupdate-client
 
-Signed-off-by: Dragan Cecavac <dcecavac@witekio.com>
+Signed-off-by: Dragan Cecavac <dcecavac>
 ---
  tools/progress.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

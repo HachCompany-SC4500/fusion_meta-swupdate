@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Copyright (C) 2019 Witekio
-# Author: Dragan Cecavac <dcecavac@witekio.com>
+# Author: Dragan Cecavac <dcecavac>
 #
 # Usage:
 #       ./prepare-image-components.sh input_type rootfs_input DEPLOY_DIR_IMAGE

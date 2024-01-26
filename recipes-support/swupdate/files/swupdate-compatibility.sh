@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Copyright (C) 2020 Witekio
-# Author: Dragan Cecavac <dcecavac@witekio.com>
+# Author: Dragan Cecavac <dcecavac>
 #
 # /!\ WARNING: This script is FROZEN!
 # It should not be modified anymore as it is here only for compatibility
