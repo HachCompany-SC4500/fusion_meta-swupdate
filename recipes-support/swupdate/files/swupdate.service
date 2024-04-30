@@ -14,7 +14,12 @@ EnvironmentFile=/run/system_bank.env
 # but after all components with the option "installed-directly = true;"
 # have been installed.
 # ${bank_selection} comes from the loaded enviroment file system_bank.env above.
-ExecStart=/usr/bin/swupdate -e all,bank-${bank_selection} -v -w "-r /www" -k /etc/public.pem -P /etc/swupdate-preinstall.sh
+# Webserver is only started in development mode
+ExecStart=/bin/sh -c ' \
+	[[ -f /media/persistent/development ]] \
+	&& /usr/bin/swupdate -e all,bank-${bank_selection} -v -k /etc/public.pem -P /etc/swupdate-preinstall.sh -w "-r /www" \
+	|| /usr/bin/swupdate -e all,bank-${bank_selection} -v -k /etc/public.pem -P /etc/swupdate-preinstall.sh \
+	'
 KillMode=mixed
 
 [Install]
